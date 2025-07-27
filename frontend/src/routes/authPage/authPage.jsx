@@ -7,6 +7,7 @@ const AuthPage = () => {
     const [error, setError] = useState("")
     return (
         <div className="authPage">
+             {/* just a try hai */}
             <div className="authContainer">
                 <Image path="general/logo.png" alt="" w={36} h={36}/>
                 <h1> { isRegister ? "Create an account" : "Login to your account" }</h1>
