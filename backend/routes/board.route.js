@@ -1,9 +1,7 @@
 import express from "express"
-
+import {getBoards} from "../controllers/board.controller.js"
 const router = express.Router()
 
-router.get("/test" , (req,res) => {
-    return res.json("Hello from board router")
-})
+router.get("/:userId", getBoards)
 
 export default router

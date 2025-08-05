@@ -1,9 +1,8 @@
 import express from "express"
+import { getComments } from "../controllers/comment.controller.js"
 
 const router = express.Router()
 
-router.get("/test" , (req,res) => {
-    return res.json("Hello from comment router")
-})
+router.get('/:postId', getComments)
 
 export default router
