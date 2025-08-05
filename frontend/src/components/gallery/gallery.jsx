@@ -4,14 +4,14 @@ import { useInfiniteQuery } from '@tanstack/react-query'
 import axios from "axios"
 import InfiniteScroll from "react-infinite-scroll-component"
 
-const fetchPins = async({pageParam,search, userId}) => {
-    const res = await axios.get(`${import.meta.env.VITE_API_ENDPOINT}/pins?cursor=${pageParam}&search=${search || ""}&user=${userId || ""}`)
+const fetchPins = async({pageParam,search, userId, boardId}) => {
+    const res = await axios.get(`${import.meta.env.VITE_API_ENDPOINT}/pins?cursor=${pageParam}&search=${search || ""}&user=${userId || ""}&boardId=${boardId || ""}`)
     return res.data
 }
-const Gallery = ({ search, userId }) => {
+const Gallery = ({ search, userId, boardId }) => {
     const { data, fetchNextPage, hasNextPage, status, error } = useInfiniteQuery({ 
         queryKey: ['pins',search,userId],
-        queryFn: ({pageParam = 0}) => fetchPins({pageParam, search, userId}),
+        queryFn: ({pageParam = 0}) => fetchPins({pageParam, search, userId, boardId}),
         initialPageParam: 0,
         getNextPageParam: (lastPage, pages) => lastPage.nextCursor    
     })
